@@ -1,0 +1,2 @@
+// [GET] http://localhost:3000/topics
+GET http://localhost:3000/topics

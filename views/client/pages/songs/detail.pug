@@ -1,0 +1,40 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+
+block main
+  .singer-detail
+    .container.my-3
+      .row 
+        .col-12 
+          +box-head(song.title)
+
+          .inner-actions
+            div(class="inner-action inner-time") 
+              <img width="15" height="15" src="https://img.icons8.com/ios/50/clock--v1.png" alt="clock--v1"/> 20/10/2023
+            div(class="inner-action inner-singer")
+              <img width="15" height="15" src="https://img.icons8.com/ios-filled/50/radio-studio.png" alt="radio-studio"/> #{singer.fullName} 
+            div(class="inner-action inner-topic")
+              <img width="15" height="15" src="https://img.icons8.com/ios/50/apple-music.png" alt="apple-music"/> #{topic.title}
+            div(class="inner-action inner-listen")
+              <i class='fa-solid fa-headphones m-1'></i>
+              span #{song.listen} lượt nghe
+            div(class="inner-action inner-like" button-like=song.id)
+              <i class="fa-regular fa-thumbs-up m-1"></i>
+                span <span data-like>#{song.like}<span>
+            div(class=`inner-action inner-heart ${song.isFavorite ? "active" : ""}` button-favorite=song.id)
+              <i class="fa-regular fa-heart m-1"></i> Bài hát yêu thích
+          .inner-play 
+            .inner-avatar 
+              img(src=song.avatar) 
+            .inner-audio 
+              div(id="aplayer" data-song=song data-singer=singer)
+
+          .inner-desc
+            .inner-label Mô tả
+            .inner-text 
+              | !{song.description}
+          .inner-desc
+            .inner-label Lời bài hát
+            .inner-text 
+              | !{song.lyrics}   
